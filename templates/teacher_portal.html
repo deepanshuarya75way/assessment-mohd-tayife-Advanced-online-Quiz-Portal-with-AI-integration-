@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teacher Administration</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(135deg,#0f172a,#111827,#1e3a8a);
+
+min-height:100vh;
+
+color:#fff;
+
+}
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:#2563eb;
+
+filter:blur(170px);
+
+top:-180px;
+left:-150px;
+
+opacity:.25;
+
+z-index:-1;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:450px;
+height:450px;
+
+background:#9333ea;
+
+filter:blur(170px);
+
+right:-150px;
+bottom:-150px;
+
+opacity:.20;
+
+z-index:-1;
+
+}
+
+.container{
+
+width:95%;
+
+max-width:1450px;
+
+margin:auto;
+
+padding:40px 0;
+
+}
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.10);
+
+padding:22px 30px;
+
+border-radius:20px;
+
+margin-bottom:30px;
+
+}
+
+.header-left{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.logo{
+
+width:55px;
+
+height:55px;
+
+border-radius:16px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+font-size:26px;
+
+}
+
+.logo i{
+
+color:white;
+
+}
+
+.title h2{
+
+font-size:28px;
+
+font-weight:600;
+
+}
+
+.title span{
+
+font-size:14px;
+
+color:#cbd5e1;
+
+}
+
+.header-right{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.username{
+
+padding:10px 18px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:30px;
+
+font-size:15px;
+
+}
+
+.btn-nav{
+
+text-decoration:none;
+
+padding:11px 18px;
+
+border-radius:10px;
+
+font-weight:500;
+
+transition:.3s;
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+.home{
+
+background:#334155;
+
+}
+
+.logout{
+
+background:#dc2626;
+
+}
+
+.btn-nav:hover{
+
+transform:translateY(-2px);
+
+}
+
+.flash{
+
+padding:15px;
+
+border-radius:12px;
+
+margin-bottom:20px;
+
+background:#14532d;
+
+border-left:4px solid #22c55e;
+
+}
+
+.dashboard{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+
+gap:25px;
+
+margin-bottom:25px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.10);
+
+border-radius:20px;
+
+padding:28px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+transition:.35s;
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.card-title{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:15px;
+
+font-size:22px;
+
+font-weight:600;
+
+}
+
+.card-title i{
+
+font-size:24px;
+
+color:#38bdf8;
+
+}
+
+.card p{
+
+color:#cbd5e1;
+
+font-size:15px;
+
+margin-bottom:20px;
+
+line-height:1.8;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:7px;
+
+font-size:14px;
+
+font-weight:500;
+
+color:#dbeafe;
+
+}
+
+input[type=text],
+textarea,
+select,
+input[type=file]{
+
+width:100%;
+
+padding:13px 15px;
+
+background:#0f172a;
+
+border:1px solid #334155;
+
+border-radius:12px;
+
+color:white;
+
+margin-bottom:18px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+border-color:#38bdf8;
+
+box-shadow:0 0 12px rgba(56,189,248,.30);
+
+}
+
+textarea{
+
+resize:vertical;
+
+}
+
+.grid3{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:15px;
+
+}
+
+.grid2{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+}
+
+.btn{
+
+padding:13px 22px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+transition:.30s;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+color:white;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.orange{
+
+background:linear-gradient(135deg,#ea580c,#fb923c);
+
+}
+
+.blue{
+
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+}
+
+.green{
+
+background:linear-gradient(135deg,#16a34a,#22c55e);
+
+}
+
+.table-card{
+
+margin-top:25px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:15px;
+
+}
+
+th{
+
+background:#2563eb;
+
+padding:14px;
+
+text-align:left;
+
+}
+
+td{
+
+padding:14px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+tr:hover{
+
+background:rgba(255,255,255,.04);
+
+}
+
+.footer{
+
+text-align:center;
+
+margin-top:40px;
+
+color:#94a3b8;
+
+font-size:14px;
+
+}
+
+@media(max-width:900px){
+
+.header{
+
+flex-direction:column;
+
+gap:20px;
+
+align-items:flex-start;
+
+}
+
+.grid3{
+
+grid-template-columns:1fr;
+
+}
+
+.grid2{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="header-left">
+
+<div class="logo">
+
+<i class="bi bi-mortarboard-fill"></i>
+
+</div>
+
+<div class="title">
+
+<h2>Teacher Administration</h2>
+
+<span>Online Quiz Management System</span>
+
+</div>
+
+</div>
+
+<div class="header-right">
+
+<div class="username">
+
+<i class="bi bi-person-circle"></i>
+
+{{ username }}
+
+</div>
+
+<a href="/" class="btn-nav home">
+
+<i class="bi bi-house-door"></i>
+
+Dashboard
+
+</a>
+
+<a href="/logout" class="btn-nav logout">
+
+<i class="bi bi-box-arrow-right"></i>
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+
+<div class="flash">
+
+<i class="bi bi-check-circle-fill"></i>
+
+{{ message }}
+
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="dashboard">
+
+<!-- AI GENERATOR CARD -->
+
+<div class="card">
+
+<div class="card-title">
+
+<i class="bi bi-cpu-fill"></i>
+
+AI Quiz Generator
+
+</div>
+
+<p>
+
+Generate professional multiple-choice questions using AI based on any topic, category and difficulty level.
+
+</p>
+
+<form action="/generate_ai_quiz" method="POST">
+
+<div class="grid3">
+
+<div>
+
+<label>Category</label>
+
+<select name="ai_category" required>
+
+{% for cat in categories %}
+<option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
+{% endfor %}
+
+</select>
+
+</div>
+
+<div>
+
+<label>Questions</label>
+
+<select name="num_questions">
+
+<option value="5">5 Questions</option>
+<option value="10">10 Questions</option>
+<option value="15">15 Questions</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Difficulty</label>
+
+<select name="difficulty">
+
+<option value="Mixed">Mixed</option>
+<option value="Easy">Easy</option>
+<option value="Medium">Medium</option>
+<option value="Hard">Hard</option>
+
+</select>
+
+</div>
+
+</div>
+
+<label>Topic / Prompt</label>
+
+<input
+type="text"
+name="ai_topic"
+placeholder="Example: Python OOP, Computer Networks, Data Structures"
+required>
+
+<button class="btn orange">
+
+<i class="bi bi-stars"></i>
+
+Generate Quiz
+
+</button>
+
+</form>
+
+</div>
+<!-- FILE UPLOAD CARD -->
+
+<div class="card">
+
+    <div class="card-title">
+        <i class="bi bi-cloud-arrow-up-fill"></i>
+        Import Question Bank
+    </div>
+
+    <p>
+        Upload a CSV or TXT file containing quiz questions. The questions will
+        automatically be added to the selected category.
+    </p>
+
+    <form action="/upload_quiz_file"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <label>Select Category</label>
+
+        <select name="file_category" required>
+
+            {% for cat in categories %}
+            <option value="{{ cat.category_name }}">
+                {{ cat.category_name }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+        <label>Select Quiz File</label>
+
+        <input
+            type="file"
+            name="quiz_file"
+            accept=".csv,.txt"
+            required>
+
+        <button class="btn blue" type="submit">
+
+            <i class="bi bi-upload"></i>
+
+            Upload Question Bank
+
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+<!-- MANUAL ENTRY -->
+
+<div class="card">
+
+<div class="card-title">
+
+<i class="bi bi-journal-plus"></i>
+
+Manual Question Entry
+
+</div>
+
+<p>
+
+Create individual questions manually and assign them to the desired category.
+
+</p>
+
+<form action="/add_question" method="POST">
+
+<label>Select Category</label>
+
+<select name="category" required>
+
+{% for cat in categories %}
+
+<option value="{{ cat.category_name }}">
+{{ cat.category_name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<label>Question</label>
+
+<textarea
+rows="3"
+name="question"
+placeholder="Enter the complete question..."
+required></textarea>
+
+<div class="grid2">
+
+<div>
+
+<label>Option A</label>
+
+<input
+type="text"
+name="option1"
+placeholder="Option A"
+required>
+
+</div>
+
+<div>
+
+<label>Option B</label>
+
+<input
+type="text"
+name="option2"
+placeholder="Option B"
+required>
+
+</div>
+
+<div>
+
+<label>Option C</label>
+
+<input
+type="text"
+name="option3"
+placeholder="Option C"
+required>
+
+</div>
+
+<div>
+
+<label>Option D</label>
+
+<input
+type="text"
+name="option4"
+placeholder="Option D"
+required>
+
+</div>
+
+</div>
+
+<label>Correct Answer</label>
+
+<input
+type="text"
+name="answer"
+placeholder="Must exactly match one option"
+required>
+
+<button
+type="submit"
+class="btn green">
+
+<i class="bi bi-check2-circle"></i>
+
+Save Question
+
+</button>
+
+</form>
+
+</div>
+<!-- =========================
+     RECENT QUESTIONS TABLE
+========================== -->
+
+<div class="card table-card">
+
+    <div class="card-title">
+
+        <i class="bi bi-table"></i>
+
+        Recently Added Questions
+
+    </div>
+
+    <p>
+
+        Latest questions added to the database.
+
+    </p>
+
+    <div style="overflow-x:auto;">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th style="width:80px;">ID</th>
+
+                    <th style="width:180px;">Category</th>
+
+                    <th>Question</th>
+
+                    <th style="width:200px;">Correct Answer</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for q in questions %}
+
+                <tr>
+
+                    <td>
+
+                        <span style="
+                        background:#2563eb;
+                        padding:6px 12px;
+                        border-radius:30px;
+                        font-size:13px;
+                        font-weight:600;">
+                            #{{ q.id }}
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span style="
+                        background:rgba(34,197,94,.18);
+                        color:#4ade80;
+                        padding:6px 14px;
+                        border-radius:30px;
+                        font-size:13px;
+                        font-weight:500;">
+
+                            {{ q.category }}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        {{ q.question }}
+
+                    </td>
+
+                    <td>
+
+                        <span style="
+                        color:#38bdf8;
+                        font-weight:600;">
+
+                            {{ q.answer }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- =========================
+          FOOTER
+========================== -->
+
+<div class="footer">
+
+    <hr style="
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.08);
+    margin-bottom:20px;">
+
+    <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;">
+
+        <div>
+
+            <strong>Online Quiz Portal</strong><br>
+
+            <span style="color:#94a3b8;">
+                Teacher Administration Dashboard
+            </span>
+
+        </div>
+
+        <div style="
+        display:flex;
+        gap:18px;
+        color:#94a3b8;">
+
+            <span>
+
+                <i class="bi bi-cpu"></i>
+
+                AI Quiz Generation
+
+            </span>
+
+            <span>
+
+                <i class="bi bi-cloud-upload"></i>
+
+                File Import
+
+            </span>
+
+            <span>
+
+                <i class="bi bi-shield-check"></i>
+
+                Secure Management
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div style="
+    margin-top:20px;
+    color:#64748b;
+    font-size:14px;">
+
+        © 2026 Online Quiz Portal • Built with Flask & MySQL
+
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

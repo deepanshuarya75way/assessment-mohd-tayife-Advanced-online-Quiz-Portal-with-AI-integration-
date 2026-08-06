@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Quiz Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(135deg,#0f172a,#111827,#1e3a8a);
+
+min-height:100vh;
+
+overflow-x:hidden;
+
+color:white;
+
+}
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:#3b82f6;
+
+filter:blur(180px);
+
+top:-150px;
+left:-150px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:450px;
+height:450px;
+
+background:#9333ea;
+
+filter:blur(180px);
+
+bottom:-150px;
+right:-120px;
+
+opacity:.30;
+
+z-index:-2;
+
+}
+
+.container{
+
+width:92%;
+max-width:1400px;
+
+margin:auto;
+
+padding:45px 0;
+
+}
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:60px;
+
+flex-wrap:wrap;
+
+}
+
+.logo{
+
+font-size:34px;
+
+font-weight:700;
+
+letter-spacing:.5px;
+
+}
+
+.logo span{
+
+color:#38bdf8;
+
+}
+
+.status{
+
+padding:10px 22px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.15);
+
+font-size:15px;
+
+}
+
+.hero{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.hero h1{
+
+font-size:60px;
+
+font-weight:700;
+
+margin-bottom:18px;
+
+line-height:1.2;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+color:#cbd5e1;
+
+}
+
+.dashboard{
+
+display:flex;
+
+justify-content:center;
+
+gap:35px;
+
+flex-wrap:wrap;
+
+}
+
+.card{
+
+width:430px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:24px;
+
+padding:35px;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.30);
+
+transition:.35s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+
+0 25px 50px rgba(0,0,0,.45);
+
+}
+
+.card h2{
+
+font-size:28px;
+
+margin-bottom:20px;
+
+}
+
+.card p{
+
+color:#cbd5e1;
+
+line-height:1.8;
+
+margin-bottom:30px;
+
+}
+
+.menu-item{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+width:100%;
+
+padding:16px;
+
+margin:14px 0;
+
+text-decoration:none;
+
+font-weight:600;
+
+border-radius:14px;
+
+transition:.30s;
+
+font-size:17px;
+
+color:white;
+
+}
+
+.menu-item:hover{
+
+transform:translateY(-3px);
+
+}
+
+.admin-menu .menu-item{
+
+background:linear-gradient(135deg,#ef4444,#dc2626);
+
+}
+
+.student-menu .menu-item{
+
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+}
+
+.logout{
+
+background:linear-gradient(135deg,#64748b,#334155)!important;
+
+}
+
+.footer{
+
+margin-top:70px;
+
+text-align:center;
+
+color:#94a3b8;
+
+font-size:15px;
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+.card{
+
+width:100%;
+
+}
+
+header{
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+
+🎯 <span>Quiz Portal</span>
+
+</div>
+
+<div class="status">
+
+{% if logged_in %}
+👋 Welcome {{ username }}
+{% else %}
+🚀 Ready to Learn
+{% endif %}
+
+</div>
+
+</header>
+
+<div class="hero">
+
+<h1>
+
+Master Knowledge.<br>
+
+Challenge Yourself.
+
+</h1>
+
+{% if logged_in %}
+<p>Your personalized learning dashboard awaits.</p>
+{% else %}
+<p>Create quizzes, compete globally and improve your skills.</p>
+{% endif %}
+
+</div>
+
+{% if logged_in %}
+
+{% if is_admin == 2 %}
+
+<div class="dashboard">
+
+<div class="card admin-menu">
+
+<h2>👨‍🏫 Teacher Dashboard</h2>
+
+<p>
+
+Manage quizzes, upload question banks, generate AI quizzes and monitor student performance.
+
+</p>
+
+<a href="/teacher_portal" class="menu-item">📝 Create / Upload Quiz</a>
+
+<a href="/all_leaderboards" class="menu-item">
+
+🏆 Student Leaderboards
+
+</a>
+
+<a href="/logout" class="menu-item logout">
+
+🚪 Logout
+
+</a>
+
+</div>
+
+</div>
+
+{% else %}
+
+<div class="dashboard">
+
+<div class="card student-menu">
+
+<h2>🎓 Student Dashboard</h2>
+
+<p>
+
+Take quizzes, improve your scores, monitor your progress and climb the leaderboard.
+
+</p>
+
+<a href="/quiz_select" class="menu-item">
+
+🧠 Start Quiz
+
+</a>
+
+<a href="/profile" class="menu-item">
+
+👤 My Profile
+
+</a>
+
+<a href="/all_leaderboards" class="menu-item">
+
+🏆 Leaderboards
+
+</a>
+
+<a href="/logout" class="menu-item logout">
+
+🚪 Logout
+
+</a>
+
+</div>
+
+</div>
+
+{% endif %}
+
+{% else %}
+
+<div class="dashboard">
+
+<!-- NEW SUPER ADMIN CARD -->
+<div class="card admin-menu" style="border-left: 5px solid #64748b;">
+<h2>🔐 Admin</h2>
+<p>
+College IT Administrators can log in here to manage teachers, upload student rosters, and create quizzes.
+</p>
+<a href="/admin_login" class="menu-item" style="background:linear-gradient(135deg,#64748b,#334155);">
+🔑 Admin Login
+</a>
+</div>
+
+<div class="card admin-menu">
+
+<h2>👨‍🏫 Teachers</h2>
+
+<p>
+
+Teachers cannot register directly. Please contact the College Admin for an invitation link.
+
+</p>
+
+<a href="/login?role=2" class="menu-item">
+
+🔑 Teacher Login
+
+</a>
+
+</div>
+
+<div class="card student-menu">
+
+<h2>🎓 Students</h2>
+
+<p>
+
+Join quizzes, track your performance, earn ranks and compete with learners worldwide.
+
+</p>
+
+<a href="/login?role=0" class="menu-item">
+
+🔑 Student Login
+
+</a>
+
+<a href="/register/student" class="menu-item">
+
+📝 Create Account
+
+</a>
+
+</div>
+
+</div>
+
+{% endif %}
+
+<div class="footer">
+
+© 2026 Online Quiz Portal • AI Powered Learning Platform
+
+</div>
+
+</div>
+
+</body>
+</html>

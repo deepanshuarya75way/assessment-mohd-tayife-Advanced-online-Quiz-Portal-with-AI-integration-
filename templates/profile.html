@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(135deg,#0f172a,#111827,#1e3a8a);
+
+min-height:100vh;
+
+padding:40px;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:450px;
+height:450px;
+
+background:#2563eb;
+
+filter:blur(170px);
+
+top:-150px;
+left:-150px;
+
+opacity:.28;
+
+z-index:-1;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:420px;
+height:420px;
+
+background:#9333ea;
+
+filter:blur(170px);
+
+right:-150px;
+bottom:-150px;
+
+opacity:.20;
+
+z-index:-1;
+
+}
+
+.container{
+
+width:95%;
+
+max-width:1100px;
+
+margin:auto;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:22px;
+
+padding:30px;
+
+margin-bottom:25px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.30);
+
+}
+
+.header{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+margin-bottom:25px;
+
+}
+
+.avatar{
+
+width:75px;
+
+height:75px;
+
+border-radius:18px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+font-size:32px;
+
+}
+
+.header h2{
+
+font-size:30px;
+
+font-weight:600;
+
+}
+
+.subtitle{
+
+color:#cbd5e1;
+
+font-size:15px;
+
+margin-top:5px;
+
+}
+
+.profile-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:18px;
+
+margin-top:20px;
+
+}
+
+.info{
+
+background:rgba(255,255,255,.05);
+
+padding:18px;
+
+border-radius:14px;
+
+}
+
+.info label{
+
+display:block;
+
+font-size:13px;
+
+color:#94a3b8;
+
+margin-bottom:8px;
+
+}
+
+.info span{
+
+font-size:18px;
+
+font-weight:600;
+
+}
+
+.section-title{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-size:24px;
+
+margin-bottom:20px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+overflow:hidden;
+
+border-radius:14px;
+
+}
+
+th{
+
+background:#2563eb;
+
+padding:15px;
+
+text-align:left;
+
+font-size:15px;
+
+}
+
+td{
+
+padding:15px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+background:rgba(255,255,255,.04);
+
+}
+
+tr:hover td{
+
+background:rgba(255,255,255,.08);
+
+}
+
+.flag{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:6px 12px;
+
+border-radius:30px;
+
+background:rgba(239,68,68,.18);
+
+color:#fecaca;
+
+font-size:13px;
+
+font-weight:500;
+
+}
+
+.clean{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:6px 12px;
+
+border-radius:30px;
+
+background:rgba(34,197,94,.18);
+
+color:#86efac;
+
+font-size:13px;
+
+font-weight:500;
+
+}
+
+.buttons{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin-top:30px;
+
+}
+
+.btn{
+
+text-decoration:none;
+
+padding:14px 22px;
+
+border-radius:14px;
+
+color:white;
+
+font-weight:600;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.home{
+
+background:linear-gradient(135deg,#334155,#475569);
+
+}
+
+.quiz{
+
+background:linear-gradient(135deg,#16a34a,#22c55e);
+
+}
+
+.footer{
+
+margin-top:25px;
+
+text-align:center;
+
+color:#94a3b8;
+
+font-size:14px;
+
+}
+
+@media(max-width:768px){
+
+body{
+
+padding:20px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="header">
+
+<div class="avatar">
+
+<i class="bi bi-person-circle"></i>
+
+</div>
+
+<div>
+
+<h2>My Profile</h2>
+
+<div class="subtitle">
+
+View your account details and quiz activity.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="profile-grid">
+
+<div class="info">
+
+<label>Full Name</label>
+
+<span>{{ user.name }}</span>
+
+</div>
+
+<div class="info">
+
+<label>Email Address</label>
+
+<span>{{ user.email }}</span>
+
+</div>
+
+<div class="info">
+
+<label>Username</label>
+
+<span>{{ user.username }}</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+
+<i class="bi bi-clock-history"></i>
+
+Quiz History
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Category</th>
+
+<th>Score</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for h in history %}
+
+<tr>
+
+<td>{{ h.category }}</td>
+
+<td><strong>{{ h.score }}/10</strong></td>
+
+<td>
+
+{% if h.cheated > 0 %}
+
+<span class="flag">
+
+<i class="bi bi-shield-exclamation"></i>
+
+{{ h.cheated }} integrity flag{{ 's' if h.cheated > 1 else '' }}
+
+</span>
+
+{% else %}
+
+<span class="clean">
+
+<i class="bi bi-check-circle-fill"></i>
+
+Verified
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+<td colspan="3" style="text-align:center;color:#cbd5e1;">
+
+No quizzes taken yet.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="buttons">
+
+<a href="/" class="btn home">
+
+<i class="bi bi-house-door-fill"></i>
+
+Dashboard
+
+</a>
+
+<a href="/quiz_select" class="btn quiz">
+
+<i class="bi bi-play-circle-fill"></i>
+
+Take Quiz
+
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+Online Quiz Portal • Student Profile
+
+</div>
+
+</div>
+
+</body>
+
+</html>

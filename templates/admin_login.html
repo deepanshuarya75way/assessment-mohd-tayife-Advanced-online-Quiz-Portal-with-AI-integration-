@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Admin Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background: linear-gradient(135deg,#0f172a,#111827,#1e3a8a); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 30px; overflow-x: hidden; color: white; }
+body::before { content: ''; position: fixed; width: 500px; height: 500px; background: #64748b; filter: blur(180px); top: -150px; left: -150px; opacity: .35; z-index: -2; }
+body::after { content: ''; position: fixed; width: 450px; height: 450px; background: #334155; filter: blur(180px); bottom: -150px; right: -120px; opacity: .30; z-index: -2; }
+.container { width: 100%; max-width: 430px; background: rgba(255,255,255,.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 35px; box-shadow: 0 15px 40px rgba(0,0,0,.30); }
+h2 { font-size: 28px; margin-bottom: 10px; text-align: center; }
+.subtitle { color: #cbd5e1; font-size: 14px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+input { width: 100%; padding: 16px; margin: 14px 0; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10); color: white; font-size: 16px; transition: .30s; }
+input:focus { outline: none; border-color: #94a3b8; background: rgba(100,116,139,.15); }
+input::placeholder { color: #94a3b8; }
+.menu-item { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; margin: 14px 0 0 0; text-decoration: none; font-weight: 600; border-radius: 14px; transition: .30s; font-size: 17px; color: white; border: none; cursor: pointer; background: linear-gradient(135deg,#64748b,#334155); }
+.menu-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+.error { color: #ef4444; text-align: center; font-weight: 500; margin-bottom: 20px; background: rgba(239, 68, 68, .15); padding: 12px; border-radius: 10px; border: 1px solid rgba(239, 68, 68, .3); }
+.links { margin-top: 25px; text-align: center; }
+.links a { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🔐 Admin Panel</h2>
+    <div class="subtitle">Authorized College IT Personnel Only</div>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        <input type="text" name="username" placeholder="Admin Username" required>
+        <input type="password" name="password" placeholder="Admin Password" required>
+        <button type="submit" class="menu-item">🔑 Authenticate</button>
+    </form>
+
+    <div class="links">
+        <a href="/">⬅️ Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
