@@ -8,26 +8,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body { background: linear-gradient(135deg, #0f172a, #111827, #1e3a8a); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 30px; overflow-x: hidden; color: white; }
-body::before { content: ''; position: fixed; width: 450px; height: 450px; background: #2563eb; filter: blur(180px); top: -150px; left: -150px; opacity: .30; z-index: -1; }
-body::after { content: ''; position: fixed; width: 450px; height: 450px; background: #9333ea; filter: blur(180px); right: -150px; bottom: -150px; opacity: .25; z-index: -1; }
-
-/* Layout Wrapper */
-.wrapper { max-width: 1400px; width: 100%; margin: 0 auto; }
-
-/* Header: Strictly Horizontal */
-.header { display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; border-radius: 24px; background: rgba(255,255,255,.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 15px 40px rgba(0,0,0,.35); margin-bottom: 28px; }
+body { background: linear-gradient(135deg, #0f172a, #111827, #1e3a8a); min-height: 100vh; padding: 30px; overflow-x: hidden; color: white; }
+body::before { content: ''; position: fixed; width: 420px; height: 420px; background: #2563eb; filter: blur(170px); top: -140px; left: -140px; opacity: .28; z-index: -1; }
+body::after { content: ''; position: fixed; width: 420px; height: 420px; background: #9333ea; filter: blur(170px); right: -140px; bottom: -140px; opacity: .22; z-index: -1; }
+.header { max-width: 1400px; width: 100%; margin: 0 auto 28px auto; display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; border-radius: 22px; background: rgba(255,255,255,.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 15px 40px rgba(0,0,0,.35); flex-wrap: wrap; gap: 15px; }
 .title { display: flex; align-items: center; gap: 18px; }
 .title-icon { width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border-radius: 16px; background: linear-gradient(135deg, #2563eb, #06b6d4); font-size: 28px; flex-shrink: 0; }
 .title h2 { font-size: 28px; font-weight: 600; margin-bottom: 4px; }
 .title p { color: #cbd5e1; font-size: 14px; }
 .timer { display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 14px; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.3); font-size: 22px; font-weight: 700; color: #fbbf24; flex-shrink: 0; }
-
-/* Main Container: Flexbox forces Horizontal Side-by-Side Layout */
-.main-container { display: flex; flex-wrap: nowrap; gap: 28px; align-items: flex-start; width: 100%; }
+.main-container { max-width: 1400px; width: 100%; margin: 0 auto; display: flex; flex-wrap: nowrap; gap: 28px; align-items: flex-start; }
 .quiz-area { flex: 2.3; min-width: 0; background: rgba(255,255,255,.08); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 35px; box-shadow: 0 18px 40px rgba(0,0,0,.35); }
-.palette-area { flex: 1; min-width: 280px; background: rgba(255,255,255,.08); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 28px; box-shadow: 0 18px 40px rgba(0,0,0,.35); position: sticky; top: 30px; }
-
 .progress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.10); }
 .progress span { font-size: 15px; color: #cbd5e1; }
 .diff-badge { padding: 7px 14px; border-radius: 30px; font-size: 13px; font-weight: 600; letter-spacing: .3px; }
@@ -48,11 +39,11 @@ body::after { content: ''; position: fixed; width: 450px; height: 450px; backgro
 .btn-submit { margin-top: 35px; background: #dc2626; color: white; padding: 15px 28px; font-size: 16px; }
 .cancel { display: inline-block; margin-top: 18px; color: #94a3b8; text-decoration: none; font-size: 14px; }
 .cancel:hover { color: white; }
-
+.palette-area { flex: 1; min-width: 280px; background: rgba(255,255,255,.08); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 28px; box-shadow: 0 18px 40px rgba(0,0,0,.35); position: sticky; top: 30px; }
 .palette-title { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.10); }
 .palette-title i { font-size: 22px; color: #60a5fa; }
 .palette-title h3 { font-size: 20px; font-weight: 600; }
-.palette-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 25px; }
 .q-btn { height: 46px; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 15px; transition: .25s; background: rgba(255,255,255,.08); color: white; border: 1px solid rgba(255,255,255,.10); }
 .q-btn:hover { transform: translateY(-2px); }
 .q-btn.answered { background: #16a34a; color: white; border: none; }
@@ -67,81 +58,89 @@ body::after { content: ''; position: fixed; width: 450px; height: 450px; backgro
 .box-pending { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.20); }
 .footer-note { margin-top: 20px; font-size: 13px; text-align: center; color: #94a3b8; line-height: 1.7; }
 
-/* Only stack vertically on very small screens (under 768px) */
-@media(max-width: 768px) { 
-    .main-container { flex-direction: column; } 
-    .palette-area { position: relative; top: 0; min-width: 100%; } 
-    .header { flex-direction: column; text-align: center; } 
-    .action-buttons { flex-direction: column; align-items: stretch; } 
-    .action-buttons div { display: flex; flex-direction: column; gap: 12px; width: 100%; } 
-    .btn { justify-content: center; width: 100%; } 
-    .palette-grid { grid-template-columns: repeat(4, 1fr); } 
-    .question-text { font-size: 22px; } 
-}
+/* Modal Styles */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
+.modal-box { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 30px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+.modal-box h3 { font-size: 22px; margin-bottom: 20px; text-align: center; color: #38bdf8; }
+.review-section { margin-bottom: 20px; }
+.review-section h4 { font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.review-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.review-chip { padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; border: 1px solid #475569; background: #0f172a; color: #e2e8f0; transition: 0.2s; }
+.review-chip:hover { background: #2563eb; border-color: #3b82f6; transform: translateY(-2px); }
+.modal-actions { display: flex; gap: 15px; margin-top: 20px; }
+.modal-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; color: white; }
+.btn-cancel { background: #64748b; }
+.btn-confirm { background: #dc2626; }
+
+@media(max-width: 1100px) { .main-container { flex-direction: column; } .palette-area { position: relative; top: 0; min-width: 100%; } }
+@media(max-width: 768px) { .header { flex-direction: column; text-align: center; } .action-buttons { flex-direction: column; align-items: stretch; } .action-buttons div { display: flex; flex-direction: column; gap: 12px; width: 100%; } .btn { justify-content: center; width: 100%; } .palette-grid { grid-template-columns: repeat(4, 1fr); } .question-text { font-size: 22px; } }
 </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <!-- Header (Top Line) -->
-    <div class="header">
-        <div class="title">
-            <div class="title-icon"><i class="bi bi-journal-check"></i></div>
-            <div style="text-align: left;">
-                <h2>{{ category }} Assessment</h2>
-                <p>Complete all questions before submitting your assessment.</p>
-            </div>
+<div class="header">
+    <div class="title">
+        <div class="title-icon"><i class="bi bi-journal-check"></i></div>
+        <div>
+            <h2>{{ category }} Assessment</h2>
+            <p>Complete all questions before submitting your assessment.</p>
         </div>
-        <div class="timer">
-            <i class="bi bi-clock-history"></i>
-            <span id="timer">10:00</span>
+    </div>
+    <div class="timer">
+        <i class="bi bi-clock-history"></i>
+        <span id="timer">10:00</span>
+    </div>
+</div>
+
+<div class="main-container">
+    <div class="quiz-area">
+        <div class="progress">
+            <span id="progress-text">Question 1 of 10</span>
+            <span id="diff-label"></span>
+        </div>
+        <div id="question-box" class="question-text">Loading questions...</div>
+        <div id="options-box"></div>
+
+        <div class="action-buttons">
+            <button class="btn btn-prev" onclick="changeQuestion(-1)"><i class="bi bi-arrow-left"></i> Previous</button>
+            <div>
+                <button class="btn btn-clear" onclick="clearResponse()"><i class="bi bi-eraser"></i> Clear</button>
+                <button class="btn btn-review" onclick="markForReview()"><i class="bi bi-bookmark"></i> Review</button>
+            </div>
+            <button class="btn btn-save-next" onclick="saveAndNext()">Save & Next <i class="bi bi-arrow-right"></i></button>
+        </div>
+        
+        <div id="submit-area" style="text-align:center;">
+            <button class="btn btn-submit" onclick="submitQuiz()"><i class="bi bi-check2-circle"></i> Submit Assessment</button>
+            <br>
+            <a href="/quiz_select" class="cancel"><i class="bi bi-x-circle"></i> Cancel Assessment</a>
         </div>
     </div>
 
-    <!-- Main Container: Question (Left) & Navigator (Right) on ONE horizontal line -->
-    <div class="main-container">
-        <!-- Question Area (Left) -->
-        <div class="quiz-area">
-            <div class="progress">
-                <span id="progress-text">Question 1 of 10</span>
-                <span id="diff-label"></span>
-            </div>
-            
-            <div id="question-box" class="question-text">Loading questions...</div>
-            <div id="options-box"></div>
-
-            <div class="action-buttons">
-                <button class="btn btn-prev" onclick="changeQuestion(-1)"><i class="bi bi-arrow-left"></i> Previous</button>
-                <div>
-                    <button class="btn btn-clear" onclick="clearResponse()"><i class="bi bi-eraser"></i> Clear</button>
-                    <button class="btn btn-review" onclick="markForReview()"><i class="bi bi-bookmark"></i> Review</button>
-                </div>
-                <button class="btn btn-save-next" onclick="saveAndNext()">Save & Next <i class="bi bi-arrow-right"></i></button>
-            </div>
-            
-            <div id="submit-area" style="text-align:center;">
-                <button class="btn btn-submit" onclick="submitQuiz()"><i class="bi bi-check2-circle"></i> Submit Assessment</button>
-                <br>
-                <a href="/quiz_select" class="cancel"><i class="bi bi-x-circle"></i> Cancel Assessment</a>
-            </div>
+    <div class="palette-area">
+        <div class="palette-title">
+            <i class="bi bi-grid-3x3-gap-fill"></i>
+            <h3>Question Navigator</h3>
         </div>
+        <div class="palette-grid" id="palette-grid"></div>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-box box-answered"></div> Answered</div>
+            <div class="legend-item"><div class="legend-box box-pending"></div> Not Answered</div>
+            <div class="legend-item"><div class="legend-box box-review"></div> Marked for Review</div>
+        </div>
+        <div class="footer-note">Navigate between generated questions using the navigator.<br>Your progress is automatically saved locally during the assessment.</div>
+    </div>
+</div>
 
-        <!-- Question Navigator (Right) -->
-        <div class="palette-area">
-            <div class="palette-title">
-                <i class="bi bi-grid-3x3-gap-fill"></i>
-                <h3>Question Navigator</h3>
-            </div>
-            <div class="palette-grid" id="palette-grid"></div>
-            <div class="legend">
-                <div class="legend-item"><div class="legend-box box-answered"></div> Answered</div>
-                <div class="legend-item"><div class="legend-box box-pending"></div> Not Answered</div>
-                <div class="legend-item"><div class="legend-box box-review"></div> Marked for Review</div>
-            </div>
-            <div class="footer-note">
-                Navigate between generated questions using the navigator.<br>
-                Your progress is automatically saved locally during the assessment.
-            </div>
+<!-- REVIEW MODAL -->
+<div id="review-modal" class="modal-overlay">
+    <div class="modal-box">
+        <h3>📝 Assessment Review</h3>
+        <p style="text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Review your answers before final submission.</p>
+        <div id="modal-content"></div>
+        <div class="modal-actions">
+            <button class="modal-btn btn-cancel" onclick="closeReviewModal()">⬅️ Back to Quiz</button>
+            <button class="modal-btn btn-confirm" onclick="forceSubmitQuiz()">✅ Confirm Final Submit</button>
         </div>
     </div>
 </div>
@@ -152,6 +151,7 @@ body::after { content: ''; position: fixed; width: 450px; height: 450px; backgro
     const storageKey = `quiz_progress_${category}`;
     const MAX_QUESTIONS = 10;
     
+    // ADAPTIVE DIFFICULTY ENGINE
     let easyQs = allQuestions.filter(q => q.difficulty === 'Easy');
     let medQs = allQuestions.filter(q => q.difficulty === 'Medium' || !q.difficulty);
     let hardQs = allQuestions.filter(q => q.difficulty === 'Hard');
@@ -309,15 +309,13 @@ body::after { content: ''; position: fixed; width: 450px; height: 450px; backgro
         }));
     }
 
-    // Anti-Cheat
     let tabSwitches = 0;
     let isCheatingDetected = false;
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
             tabSwitches++;
-            if (tabSwitches <= 2) {
-                alert(`Warning ${tabSwitches}/2: Do not leave the quiz tab!`);
-            } else if (!isCheatingDetected) {
+            if (tabSwitches <= 2) alert(`Warning ${tabSwitches}/2: Do not leave the quiz tab!`);
+            else if (!isCheatingDetected) {
                 isCheatingDetected = true;
                 alert("Cheating detected! Your quiz is being submitted automatically.");
                 forceSubmitQuiz(); 
@@ -326,27 +324,57 @@ body::after { content: ''; position: fixed; width: 450px; height: 450px; backgro
     });
 
     function submitQuiz() {
-        let unanswered = 0;
+        const modal = document.getElementById('review-modal');
+        const content = document.getElementById('modal-content');
+        
+        let answeredArr = [];
+        let unansweredArr = [];
+        let reviewArr = [];
+        
         for(let i=0; i<quizPath.length; i++) {
-            if(!userAnswers[quizPath[i].id]) {
-                unanswered++;
+            let q = quizPath[i];
+            if(reviewQuestions.includes(q.id)) {
+                reviewArr.push(`<div class="review-chip" onclick="jumpToFromModal(${i})">Q${i+1} ⚠️</div>`);
             }
-        }
-
-        if (unanswered > 0) {
-            if (!confirm(`You have ${unanswered} unanswered question(s). Are you sure you want to submit?`)) {
-                return; 
-            }
-        } else {
-            if (!confirm("Are you sure you want to submit the quiz?")) {
-                return; 
+            if(userAnswers[q.id]) {
+                answeredArr.push(`<div class="review-chip" onclick="jumpToFromModal(${i})">Q${i+1} ✅</div>`);
+            } else {
+                unansweredArr.push(`<div class="review-chip" style="border-color:#dc2626; color:#fca5a5;" onclick="jumpToFromModal(${i})">Q${i+1} ❓</div>`);
             }
         }
         
-        forceSubmitQuiz();
+        let answeredHtml = answeredArr.length > 0 ? `<div class="review-list">${answeredArr.join('')}</div>` : `<div class="review-list"><span style="color:#94a3b8; font-size:14px;">None.</span></div>`;
+        let unansweredHtml = unansweredArr.length > 0 ? `<div class="review-list">${unansweredArr.join('')}</div>` : `<div class="review-list"><span style="color:#94a3b8; font-size:14px;">None.</span></div>`;
+        let reviewHtml = reviewArr.length > 0 ? `<div class="review-list">${reviewArr.join('')}</div>` : `<div class="review-list"><span style="color:#94a3b8; font-size:14px;">None.</span></div>`;
+        
+        content.innerHTML = `
+            <div class="review-section">
+                <h4 style="color:#4ade80;">✅ Answered (${answeredArr.length})</h4>
+                ${answeredHtml}
+            </div>
+            <div class="review-section">
+                <h4 style="color:#fca5a5;">❓ Unattempted (${unansweredArr.length})</h4>
+                ${unansweredHtml}
+            </div>
+            <div class="review-section">
+                <h4 style="color:#fbbf24;">⚠️ Marked for Review (${reviewArr.length})</h4>
+                ${reviewHtml}
+            </div>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    function closeReviewModal() {
+        document.getElementById('review-modal').style.display = 'none';
+    }
+
+    function jumpToFromModal(index) {
+        closeReviewModal();
+        jumpToQuestion(index);
     }
 
     function forceSubmitQuiz() {
+        document.getElementById('review-modal').style.display = 'none';
         clearInterval(timerInterval);
         localStorage.removeItem(storageKey);
         const form = document.createElement('form');
